@@ -1,4 +1,4 @@
-package com.example.phonelist
+package com.example.phonelist.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.phonelist.R
 import com.example.phonelist.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -23,8 +24,11 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+        /*
+        Salta para a MainActivity, onde será mostrado a lista de contatos
+         */
         binding.buttonLogin.setOnClickListener {
-
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
         /*

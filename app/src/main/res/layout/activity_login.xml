@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".ui.LoginActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -27,7 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="@string/username" />
+            android:hint="@string/username"
+            android:text="username"/>
 
         <EditText
             android:drawableStart="@drawable/baseline_lock_24"
@@ -35,7 +36,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="@string/password" />
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:text="password"/>
 
         <CheckBox
             android:id="@+id/checkbox_logged"
