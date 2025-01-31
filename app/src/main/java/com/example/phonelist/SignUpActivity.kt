@@ -1,21 +1,20 @@
 package com.example.phonelist
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.phonelist.databinding.ActivityLoginBinding
+import com.example.phonelist.databinding.ActivitySignUpBinding
 
-class LoginActivity : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivitySignUpBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -23,18 +22,9 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-        binding.buttonLogin.setOnClickListener {
-
-        }
-
-        /*
-        Salta para a SignUpActivity, onde será feito o registro do usuário
-         */
-        binding.textSignUp.setOnClickListener {
-            startActivity(Intent(this, SignUpActivity::class.java))
-        }
-        binding.textRecoverPassword.setOnClickListener {
-
+        binding.buttonSignUp.setOnClickListener {
+            //TODO: Fazer o registro do usuário - Validação de campos, etc.
+            finish()
         }
     }
 }
