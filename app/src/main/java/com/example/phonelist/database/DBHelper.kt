@@ -9,7 +9,7 @@ import com.example.phonelist.model.UserModel
 class DBHelper(context: Context): SQLiteOpenHelper(context, "database.db", null, 1){
 
     val sql = arrayOf(
-        "CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)",
+        "CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, password TEXT)",
         "INSERT INTO users (username, password) VALUES ('admin', 'password')"
     )
 

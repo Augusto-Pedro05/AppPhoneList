@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="@string/username"
-            android:text="username"/>
+            android:text="admin"/>
 
         <EditText
             android:drawableStart="@drawable/baseline_lock_24"
