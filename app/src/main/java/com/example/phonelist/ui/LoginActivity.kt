@@ -33,6 +33,13 @@ class LoginActivity : AppCompatActivity() {
 
         sharedPreferences = application.getSharedPreferences("login", Context.MODE_PRIVATE)
 
+        // Valida se o usuário está logado, caso esteja, ele é redirecionado para a MainActivity
+        val username = sharedPreferences.getString("username", "")
+        if (username != null) {
+            if(username.isNotEmpty()){
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+        }
         /*
         Salta para a MainActivity depois de uma serie de validações de login
         1) Verifica se os campos estão vazios
