@@ -12,4 +12,5 @@
     <string name="passwords_don_t_match">Passwords don\'t match</string>
     <string name="sign_up_ok">Sign Up OK</string>
     <string name="sign_up_error">Sign Up Error</string>
+    <string name="login_error">Login error</string>
 </resources>
