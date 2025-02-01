@@ -41,21 +41,21 @@ class MainActivity : AppCompatActivity() {
             val editor : SharedPreferences.Editor = sharedPreferences.edit()
             editor.putString("username", "")
             editor.apply()
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(applicationContext, LoginActivity::class.java))
             finish()
         }
 
         // Listagem visual dos contatos na tela
         contactList = dbHelper.getAllContact()
         adapter = ArrayAdapter(
-            this,
+            applicationContext,
             android.R.layout.simple_list_item_1,
             contactList
         )
         binding.listViewContacts.adapter = adapter
 
         /*
-        Ao clicar em algum item ...
+        Ao clicar em algum item se é redirecionado para a ContactDetailActivity, onde vai ter mais detalhes sobre o contato
          */
         binding.listViewContacts.setOnItemClickListener{_, _, position, _ ->
             val intent = Intent(applicationContext, ContactDetailActivity::class.java)
@@ -63,6 +63,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        /*
+        Redireciona para a tela de adicionar novo contato - NewContactActivity
+         */
         binding.buttonAdd.setOnClickListener {
             startActivity(Intent(applicationContext, NewContactActivity::class.java))
         }
