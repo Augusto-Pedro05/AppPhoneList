@@ -184,8 +184,7 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, "database.db", null,
         val c = db.rawQuery("SELECT * FROM contacts", null)
         var listContactModel = ArrayList<ContactModel>()
 
-        if(c.count == 1){
-            c.moveToFirst()
+        if(c.moveToFirst()){
             val idIndex = c.getColumnIndex("id")
             val idName = c.getColumnIndex("name")
             val idAddress = c.getColumnIndex("address")
@@ -204,6 +203,7 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, "database.db", null,
                 listContactModel.add(contactModel)
             }while(c.moveToNext())
         }
+        c.close()
         db.close()
         return listContactModel
     }
