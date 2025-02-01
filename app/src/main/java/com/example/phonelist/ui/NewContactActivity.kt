@@ -24,9 +24,12 @@ class NewContactActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        val i = intent
         val db = DBHelper(applicationContext)
 
+        /*
+        Salva um contato no banco de dados
+         */
         binding.buttonSave.setOnClickListener {
             val name = binding.editName.text.toString()
             val address = binding.editAddress.text.toString()
@@ -39,12 +42,20 @@ class NewContactActivity : AppCompatActivity() {
                 if(res > 0){
                     Toast.makeText(applicationContext,
                         getString(R.string.insert_ok), Toast.LENGTH_SHORT).show()
+                    setResult(1,i)
                     finish()
                 }else{
                     Toast.makeText(applicationContext,
                         getString(R.string.insert_error), Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+        /*
+        Cancela a ação de salvar o contato
+         */
+        binding.buttonCancel.setOnClickListener {
+            setResult(0,i)
+            finish()
         }
     }
 }
