@@ -129,7 +129,14 @@ class ContactDetailActivity : AppCompatActivity() {
         Abre a tela de seleção de imagem
          */
         binding.imageContact.setOnClickListener {
-            launcher.launch(Intent(applicationContext, ContactImageSelectionActivity::class.java))
+            if(binding.editName.isEnabled) {
+                launcher.launch(
+                    Intent(
+                        applicationContext,
+                        ContactImageSelectionActivity::class.java
+                    )
+                )
+            }
         }
 
         /*
@@ -138,7 +145,7 @@ class ContactDetailActivity : AppCompatActivity() {
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if(it.data != null && it.resultCode == 1){
                 imageId = it.data?.extras?.getInt("id")
-                binding.imageContact.setImageDrawable(resources.getDrawable(imageId!!))
+                binding.imageContact.setImageResource(imageId!!)
             }else{
                 imageId = -1
                 binding.imageContact.setImageResource(R.drawable.contacts)
@@ -191,7 +198,7 @@ class ContactDetailActivity : AppCompatActivity() {
         binding.editEmail.setText(contactModel.email)
         binding.editPhone.setText(contactModel.phone.toString())
         if(contactModel.imageId > 0){
-            binding.imageContact.setImageDrawable(resources.getDrawable(contactModel.imageId))
+            binding.imageContact.setImageResource(contactModel.imageId)
         }else{
             binding.imageContact.setImageResource(R.drawable.contacts)
         }
