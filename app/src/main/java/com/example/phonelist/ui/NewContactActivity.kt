@@ -1,8 +1,11 @@
 package com.example.phonelist.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -13,6 +16,8 @@ import com.example.phonelist.databinding.ActivityNewContactBinding
 class NewContactActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNewContactBinding
+    private lateinit var launcher: ActivityResultLauncher<Intent>
+    private var id: Int? = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +61,26 @@ class NewContactActivity : AppCompatActivity() {
         binding.buttonCancel.setOnClickListener {
             setResult(0,i)
             finish()
+        }
+
+        /*
+        Abre a tela de seleção de imagem
+         */
+        binding.imageContact.setOnClickListener {
+            launcher.launch(Intent(applicationContext, ContactImageSelectionActivity::class.java))
+        }
+
+        /*
+        Recebe o resultado da tela de seleção de imagem
+         */
+        launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if(it.data != null && it.resultCode == 1){
+                id = it.data?.extras?.getInt("id")
+                binding.imageContact.setImageDrawable(resources.getDrawable(id!!))
+            }else{
+                id = -1
+                binding.imageContact.setImageResource(R.drawable.contacts)
+            }
         }
     }
 }

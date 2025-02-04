@@ -27,4 +27,7 @@
     <string name="update_ok">Update OK</string>
     <string name="delete_ok">Delete OK</string>
     <string name="delete_error">Delete Error</string>
+    <string name="new_contact">New Contact</string>
+    <string name="select_an_image">Select an image</string>
+    <string name="remove_image">Remove Image</string>
 </resources>
