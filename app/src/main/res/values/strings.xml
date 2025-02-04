@@ -33,4 +33,7 @@
     <string name="contact_details">Contact Details</string>
     <string name="edit">Edit</string>
     <string name="back">Back</string>
+    <string name="contact">Contact</string>
+    <string name="send_by_phonelist_app">Send by PhoneList APP</string>
+    <string name="choose_email_client">Choose email client</string>
 </resources>

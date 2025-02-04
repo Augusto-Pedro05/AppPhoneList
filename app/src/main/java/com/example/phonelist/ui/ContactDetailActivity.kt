@@ -1,6 +1,9 @@
 package com.example.phonelist.ui
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -8,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.phonelist.R
@@ -22,6 +26,7 @@ class ContactDetailActivity : AppCompatActivity() {
     private lateinit var launcher: ActivityResultLauncher<Intent>
     private var contactModel = ContactModel()
     private var imageId: Int? = -1
+    private val REQUEST_PHONE_CALL = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +90,13 @@ class ContactDetailActivity : AppCompatActivity() {
             binding.layoutEdit.visibility = View.GONE
             changeEditText(true)
         }
+        /*
+        Sai do processo de edição
+         */
+        binding.buttonBack.setOnClickListener {
+            setResult(0,i)
+            finish()
+        }
 
         /*
         Cancela a ação de salvar as alterações
@@ -132,8 +144,37 @@ class ContactDetailActivity : AppCompatActivity() {
                 binding.imageContact.setImageResource(R.drawable.contacts)
             }
         }
+
+        binding.imageEmail.setOnClickListener {
+            val emailIntent = Intent(Intent.ACTION_SEND)
+            emailIntent.type = "text/plain"
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(contactModel.email))
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.contact))
+            emailIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.send_by_phonelist_app))
+
+            try{
+                startActivity(Intent.createChooser(emailIntent,
+                    getString(R.string.choose_email_client)))
+            }catch(e: Exception){
+                Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+        /*
+        Faz a ligação correspondente ao numero de contato
+         */
+        binding.imagePhone.setOnClickListener {
+            if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CALL_PHONE),REQUEST_PHONE_CALL)
+            }else{
+                val dialIntent = Intent(Intent.ACTION_CALL, Uri.parse("tel:${contactModel.phone}"))
+                startActivity(dialIntent)
+            }
+        }
     }
 
+    /*
+    Habilita visualmente o processo de edição dos dados do contato
+     */
     private fun changeEditText(status: Boolean) {
         binding.editName.isEnabled = status
         binding.editAddress.isEnabled = status
