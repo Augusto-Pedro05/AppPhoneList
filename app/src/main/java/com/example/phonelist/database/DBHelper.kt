@@ -145,7 +145,7 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, "database.db", null,
     /*
     Deleta um contato do banco de dados
      */
-    fun deteteContact(id: Int): Int{
+    fun deleteContact(id: Int): Int{
         val db = this.writableDatabase
         val res = db.delete("contacts", "id=?", arrayOf(id.toString()))
         db.close()

@@ -55,9 +55,9 @@ class MainActivity : AppCompatActivity() {
         Ao clicar em algum item se é redirecionado para a ContactDetailActivity, onde vai ter mais detalhes sobre o contato
          */
         binding.listViewContacts.setOnItemClickListener{_, _, position, _ ->
-            val intent = Intent(applicationContext, ContactDetailActivity::class.java)
+            val intent = Intent(this, ContactDetailActivity::class.java)
             intent.putExtra("id",contactList[position].id.toString())
-            startActivity(intent)
+            result.launch(intent)
         }
 
         /*

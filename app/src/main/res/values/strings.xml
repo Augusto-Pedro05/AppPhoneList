@@ -22,4 +22,9 @@
     <string name="cancel">Cancel</string>
     <string name="insert_ok">Insert OK</string>
     <string name="insert_error">Insert Error</string>
+    <string name="delete">Delete</string>
+    <string name="update_error">Update Error</string>
+    <string name="update_ok">Update OK</string>
+    <string name="delete_ok">Delete OK</string>
+    <string name="delete_error">Delete Error</string>
 </resources>
