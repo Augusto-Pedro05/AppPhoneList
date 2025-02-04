@@ -1,8 +1,11 @@
 package com.example.phonelist.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -15,7 +18,9 @@ class ContactDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityContactDetailBinding
     private lateinit var db : DBHelper
+    private lateinit var launcher: ActivityResultLauncher<Intent>
     private var contactModel = ContactModel()
+    private var imageId: Int? = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,29 +47,43 @@ class ContactDetailActivity : AppCompatActivity() {
             binding.editAddress.setText(contactModel.address)
             binding.editEmail.setText(contactModel.email)
             binding.editPhone.setText(contactModel.phone.toString())
-        }
-
-        binding.buttonSave.setOnClickListener {
-            val res = db.updateContact(
-                id = contactModel.id,
-                name = binding.editName.text.toString(),
-                address = binding.editAddress.text.toString(),
-                email = binding.editEmail.text.toString(),
-                phone = binding.editPhone.text.toString().toInt(),
-                imageId = contactModel.imageId
-            )
-
-            if (res > 0) {
-                Toast.makeText(applicationContext, getString(R.string.update_ok), Toast.LENGTH_SHORT).show()
-                setResult(1,i)
-                finish()
+            if(contactModel.imageId > 0){
+                binding.imageContact.setImageDrawable(resources.getDrawable(contactModel.imageId))
             }else{
-                Toast.makeText(applicationContext,
-                    getString(R.string.update_error), Toast.LENGTH_SHORT).show()
-                setResult(0,i)
-                finish()
+                binding.imageContact.setImageResource(R.drawable.contacts)
             }
         }
+
+        /*
+        Salva as alterações feitas no contato
+         */
+        binding.buttonSave.setOnClickListener {
+            val res = imageId?.let { it1 ->
+                db.updateContact(
+                    id = contactModel.id,
+                    name = binding.editName.text.toString(),
+                    address = binding.editAddress.text.toString(),
+                    email = binding.editEmail.text.toString(),
+                    phone = binding.editPhone.text.toString().toInt(),
+                    imageId = it1
+                )
+            }
+            if (res != null) {
+                if (res > 0) {
+                    Toast.makeText(applicationContext, getString(R.string.update_ok), Toast.LENGTH_SHORT).show()
+                    setResult(1,i)
+                    finish()
+                }else{
+                    Toast.makeText(applicationContext,
+                        getString(R.string.update_error), Toast.LENGTH_SHORT).show()
+                    setResult(0,i)
+                    finish()
+                }
+            }
+        }
+        /*
+        Cancela a ação de salvar as alterações
+         */
         binding.buttonCancel.setOnClickListener {
             binding.editName.setText(contactModel.name)
             binding.editAddress.setText(contactModel.address)
@@ -72,6 +91,9 @@ class ContactDetailActivity : AppCompatActivity() {
             binding.editPhone.setText(contactModel.phone.toString())
             finish()
         }
+        /*
+        Deleta o contato
+         */
         binding.buttonDelete.setOnClickListener {
             val res = db.deleteContact(contactModel.id)
 
@@ -84,6 +106,26 @@ class ContactDetailActivity : AppCompatActivity() {
                     getString(R.string.delete_error), Toast.LENGTH_SHORT).show()
                 setResult(0,i)
                 finish()
+            }
+        }
+
+        /*
+        Abre a tela de seleção de imagem
+         */
+        binding.imageContact.setOnClickListener {
+            launcher.launch(Intent(applicationContext, ContactImageSelectionActivity::class.java))
+        }
+
+        /*
+        Recebe o resultado da tela de seleção de imagem
+         */
+        launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if(it.data != null && it.resultCode == 1){
+                imageId = it.data?.extras?.getInt("id")
+                binding.imageContact.setImageDrawable(resources.getDrawable(imageId!!))
+            }else{
+                imageId = -1
+                binding.imageContact.setImageResource(R.drawable.contacts)
             }
         }
     }

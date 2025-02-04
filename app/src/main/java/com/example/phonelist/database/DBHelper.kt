@@ -13,8 +13,8 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, "database.db", null,
         "CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, password TEXT)",
         "INSERT INTO users (username, password) VALUES ('admin', 'password')",
         "CREATE TABLE contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,address TEXT, email TEXT, phone INT, imageId INT)",
-        "INSERT INTO contacts (name, address, email, phone, imageId) VALUES ('Maria', 'Rua das Flores', 'maria@email', 123456789, 1)",
-        "INSERT INTO contacts (name, address, email, phone, imageId) VALUES ('João', 'Rua do Sol', 'joao@email', 987654321, 2)"
+        "INSERT INTO contacts (name, address, email, phone, imageId) VALUES ('Maria', 'Rua das Flores', 'maria@email', 123456789, -1)",
+        "INSERT INTO contacts (name, address, email, phone, imageId) VALUES ('João', 'Rua do Sol', 'joao@email', 987654321, -1)"
     )
 
     /*

@@ -40,7 +40,10 @@ class NewContactActivity : AppCompatActivity() {
             val address = binding.editAddress.text.toString()
             val email = binding.editEmail.text.toString()
             val phone = binding.editPhone.text.toString().toInt()
-            val imageId = 1
+            var imageId = -1
+            if(id != null){
+                imageId = id as Int
+            }
 
             if(name.isNotEmpty() && address.isNotEmpty() && email.isNotEmpty()){
                 val res = db.insertContact(name, address, email, phone, imageId)
