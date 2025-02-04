@@ -27,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:enabled="false"
         android:hint="@string/name" />
 
     <EditText
@@ -34,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:enabled="false"
         android:hint="@string/address" />
 
     <EditText
@@ -42,6 +44,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:hint="@string/email"
+        android:enabled="false"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -50,11 +53,38 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:hint="@string/phone"
+        android:enabled="false"
         android:inputType="phone" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/layout_edit">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:text="@string/edit"
+            android:id="@+id/button_edit"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:text="@string/back"
+            android:backgroundTint="@color/cancel"
+            android:id="@+id/button_back"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_edit_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
         android:orientation="horizontal">
 
         <Button
@@ -70,6 +100,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/cancel"
             android:layout_marginHorizontal="5dp"
             android:text="@string/cancel" />
 
@@ -78,6 +109,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/delete"
             android:layout_marginHorizontal="5dp"
             android:text="@string/delete" />
 

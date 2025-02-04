@@ -2,6 +2,7 @@ package com.example.phonelist.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
@@ -40,18 +41,12 @@ class ContactDetailActivity : AppCompatActivity() {
         val i = intent
         val id = i.extras?.getString("id")
         db = DBHelper(applicationContext)
+
         if (id != null) {
             contactModel = db.getContact(id.toInt())
-
-            binding.editName.setText(contactModel.name)
-            binding.editAddress.setText(contactModel.address)
-            binding.editEmail.setText(contactModel.email)
-            binding.editPhone.setText(contactModel.phone.toString())
-            if(contactModel.imageId > 0){
-                binding.imageContact.setImageDrawable(resources.getDrawable(contactModel.imageId))
-            }else{
-                binding.imageContact.setImageResource(R.drawable.contacts)
-            }
+            populate()
+        }else{
+            finish()
         }
 
         /*
@@ -81,15 +76,24 @@ class ContactDetailActivity : AppCompatActivity() {
                 }
             }
         }
+
+        /*
+        Habilita o processo de edição do contato
+         */
+        binding.buttonEdit.setOnClickListener {
+            binding.layoutEditDelete.visibility = View.VISIBLE
+            binding.layoutEdit.visibility = View.GONE
+            changeEditText(true)
+        }
+
         /*
         Cancela a ação de salvar as alterações
          */
         binding.buttonCancel.setOnClickListener {
-            binding.editName.setText(contactModel.name)
-            binding.editAddress.setText(contactModel.address)
-            binding.editEmail.setText(contactModel.email)
-            binding.editPhone.setText(contactModel.phone.toString())
-            finish()
+            binding.layoutEditDelete.visibility = View.GONE
+            binding.layoutEdit.visibility = View.VISIBLE
+            populate()
+            changeEditText(false)
         }
         /*
         Deleta o contato
@@ -127,6 +131,28 @@ class ContactDetailActivity : AppCompatActivity() {
                 imageId = -1
                 binding.imageContact.setImageResource(R.drawable.contacts)
             }
+        }
+    }
+
+    private fun changeEditText(status: Boolean) {
+        binding.editName.isEnabled = status
+        binding.editAddress.isEnabled = status
+        binding.editEmail.isEnabled = status
+        binding.editPhone.isEnabled = status
+    }
+
+    /*
+    Preenche os campos de texto com as informações do contato
+     */
+    private fun populate() {
+        binding.editName.setText(contactModel.name)
+        binding.editAddress.setText(contactModel.address)
+        binding.editEmail.setText(contactModel.email)
+        binding.editPhone.setText(contactModel.phone.toString())
+        if(contactModel.imageId > 0){
+            binding.imageContact.setImageDrawable(resources.getDrawable(contactModel.imageId))
+        }else{
+            binding.imageContact.setImageResource(R.drawable.contacts)
         }
     }
 }
