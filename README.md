@@ -1,7 +1,6 @@
-# Lista Telefônica
-
+# Lista Telefônica📱👩‍💻
 <p align="center">
-<b>Neste repositório é desenvolvido uma lista telefônica📱👩‍💻</b>
+    <img src="./.github/contacts.png" width="200px">
 </p>
 
 *Leia isso em outros idiomas: inglês*
@@ -46,4 +45,21 @@ Antes de seguir os passos de instalação, garanta que sua máquina tenha os req
 
 Dessa forma, o primeiro passo é baixar o [arquivo](https://developer.android.com/studio?hl=pt-br) de instalação e executá-lo seguindo o [passo a passo](https://developer.android.com/codelabs/basic-android-kotlin-compose-install-android-studio?hl=pt-br#0). Assim, a IDE vai estar pronta para ser usada.
 
-O próximo passo é importar os arquivos do repositório, nessa etapa você pode fazer o [download da pasta em zip](https://docs.github.com/pt/repositories/working-with-files/using-files/downloading-source-code-archives) ou usar o [Git Bash](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository?tool=cli)
+O próximo passo é importar os arquivos do repositório, nessa etapa você pode fazer o [download da pasta em zip](https://docs.github.com/pt/repositories/working-with-files/using-files/downloading-source-code-archives) ou usar o [Git Bash](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository?tool=cli). Com os arquivos baixados, inicie o Android Studio e abra a pasta com o projeto:
+
+<p align="center">
+    <img src="./.github/open_project.png" width="500px">
+</p>
+
+Crie um novo dispositivo clicando no terceiro icone a direita e depois em ➕, selecione o Google Pixel 4 e clique em *next*:
+
+<p align="center">
+    <img src="./.github/create_device.png" width="500px">
+</p>
+
+Escolha o Vanilla Ice Cream e clique em *next* e logo em seguida execute o código no botão triangular verde acima:
+<p align="center">
+    <img src="./.github/finish_device_and_run.png" width="500px">
+</p>
+
+Pronto! Aproveite a App Phone List! 😁
