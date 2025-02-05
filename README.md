@@ -1,13 +1,27 @@
 # Lista Telefônica📱👩‍💻
+
+[KOTLIN_BADGE]: https://img.shields.io/badge/Kotlin-0095D5?&style=for-the-badge&logo=kotlin&logoColor=white
+[ANDROID_STUDIO_BADGE]: https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white
+
+![kotlin][KOTLIN_BADGE]
+![androidStudio][ANDROID_STUDIO_BADGE]
+
 <p align="center">
     <img src="./.github/contacts.png" width="200px">
 </p>
 
 *Leia isso em outros idiomas: inglês*
 
-##
+## Sobre
 
 Com o objetivo de estudar o desenvolvimento de aplicativos android de forma nativa, foi criada a aplicação PhoneList, que consiste em um projeto portfólio disponibilizado ao longo de uma série de videos gratuitos do canal [Bruno Santos](https://www.youtube.com/@brunofrs7). O projeto foi desenvolvido na linguagem kotlin a partir da IDE Android Studio Ladybug e emulado em um Google Pixel 4.
+
+### Funcionalidades
+* Registro de usuários - Login e Sign Up
+* Inserção, eliminação e edição de contatos
+* Ligações e envio de email
+* Ordenação da lista de contatos
+* Banco de Dados DBHelper
 
 ## Instrução de instalação
 Antes de seguir os passos de instalação, garanta que sua máquina tenha os requisitos necessários para rodar o Android Studio;
@@ -57,7 +71,7 @@ Crie um novo dispositivo clicando no terceiro icone a direita e depois em ➕, s
     <img src="./.github/create_device.png" width="500px">
 </p>
 
-Escolha o Vanilla Ice Cream e clique em *next* e logo em seguida execute o código no botão triangular verde acima:
+Escolha o Vanilla Ice Cream e clique em *next* e *finish*, logo em seguida execute o código no botão triangular verde acima:
 <p align="center">
     <img src="./.github/finish_device_and_run.png" width="500px">
 </p>
