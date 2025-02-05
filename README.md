@@ -1,4 +1,4 @@
-# Lista Telefônica📱👩‍💻
+# Phone List 📱👩‍💻
 
 [KOTLIN_BADGE]: https://img.shields.io/badge/Kotlin-0095D5?&style=for-the-badge&logo=kotlin&logoColor=white
 [ANDROID_STUDIO_BADGE]: https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white
@@ -10,70 +10,70 @@
     <img src="./.github/contacts.png" width="200px">
 </p>
 
-*Leia isso em outros idiomas: inglês*
+*Read this in other languages: [Portuguese](https://github.com/Augusto-Pedro05/AppPhoneList/blob/main/README-ptBR.md)*
 
-## Sobre
+## About
 
-Com o objetivo de estudar o desenvolvimento de aplicativos android de forma nativa, foi criada a aplicação PhoneList, que consiste em um projeto portfólio disponibilizado ao longo de uma série de videos gratuitos do canal [Bruno Santos](https://www.youtube.com/@brunofrs7). O projeto foi desenvolvido na linguagem kotlin a partir da IDE Android Studio Ladybug e emulado em um Google Pixel 4.
+To study native Android app development, the PhoneList application was created. It is a portfolio project made available through a series of free videos on the [Bruno Santos](https://www.youtube.com/@brunofrs7) channel. The project was developed using the Kotlin programming language in the Android Studio Ladybug IDE and emulated on a Google Pixel 4.
 
-### Funcionalidades
-* Registro de usuários - Login e Sign Up
-* Inserção, eliminação e edição de contatos
-* Ligações e envio de email
-* Ordenação da lista de contatos
-* Banco de Dados DBHelper
+### Features
+* User registration - Login and Sign Up
+* Adding, deleting, and editing contacts
+* Making calls and sending emails
+* Sorting the contact list
+* DBHelper Database
 
-## Instrução de instalação
-Antes de seguir os passos de instalação, garanta que sua máquina tenha os requisitos necessários para rodar o Android Studio;
+## Installation Instructions
+Before proceeding with the installation steps, ensure your machine meets the necessary requirements to run Android Studio;
 
 <details>
   <summary>Windows</summary>
   <ul>
-    <li>Microsoft® Windows® 8/10/11 de 64 bits</li>
-    <li>Arquitetura de CPU x86_64; Intel Core de segunda geração ou mais recente ou CPU AMD com suporte a Hipervisor do Windows</li>
-    <li>Pelo menos 8 GB de RAM</li>
-    <li>Mínimo de 8 GB de espaço em disco disponível (ambiente de desenvolvimento integrado + SDK do Android + Android Emulator)</li>
-    <li>Resolução de tela mínima de 1.280 x 800</li>
+    <li>Microsoft® Windows® 8/10/11 64-bit</li>
+    <li>x86_64 CPU architecture; Intel Core second generation or newer or AMD CPU with Windows Hypervisor support</li>
+    <li>At least 8 GB of RAM</li>
+    <li>Minimum of 8 GB of available disk space (integrated development environment + Android SDK + Android Emulator)</li>
+    <li>Minimum screen resolution of 1,280 x 800</li>
   </ul>
 </details>
 <details>
   <summary>MacOS</summary>
   <ul>
-    <li>MacOS® 10.14 (Mojave) ou mais recente</li>
-    <li>Chips baseados em ARM ou Intel Core de segunda geração ou mais recente com suporte ao framework Hypervisor</li>
-    <li>Pelo menos 8 GB de RAM</li>
-    <li>Mínimo de 8 GB de espaço em disco disponível (ambiente de desenvolvimento integrado + SDK do Android + Android Emulator)</li>
-    <li>Resolução de tela mínima de 1.280 x 800</li>
+    <li>MacOS® 10.14 (Mojave) or later</li>
+    <li>ARM-based chips or Intel Core second generation or later with Hypervisor framework support</li>
+    <li>At least 8 GB of RAM</li>
+    <li>Minimum of 8 GB of available disk space (integrated development environment + Android SDK + Android Emulator)</li>
+    <li>Minimum screen resolution of 1,280 x 800</li>
   </ul>
 </details>
 <details>
   <summary>Linux</summary>
   <ul>
-    <li>Qualquer distribuição de Linux de 64 bits que oferece suporte para Gnome, KDE ou Unity DE e a Biblioteca C do GNU (glibc) 2.31 ou mais recente</li>
-    <li>Arquitetura de CPU x86_64, Processador Intel Core de segunda geração ou AMD mais recente com suporte ao AMD Virtualization (AMD-V) e SSSE3</li>
-    <li>Pelo menos 8 GB de RAM</li>
-    <li>Mínimo de 8 GB de espaço em disco disponível (ambiente de desenvolvimento integrado + SDK do Android + Android Emulator)</li>
-    <li>Resolução de tela mínima de 1.280 x 800</li>
+    <li>Any 64-bit Linux distribution that supports Gnome, KDE, or Unity DE and GNU C Library (glibc) 2.31 or later</li>
+    <li>x86_64 CPU architecture, Intel Core second generation or newer AMD processor with AMD Virtualization (AMD-V) and SSSE3 support</li>
+    <li>At least 8 GB of RAM</li>
+    <li>Minimum of 8 GB of available disk space (integrated development environment + Android SDK + Android Emulator)</li>
+    <li>Minimum screen resolution of 1,280 x 800</li>
   </ul>
 </details>
 
-Dessa forma, o primeiro passo é baixar o [arquivo](https://developer.android.com/studio?hl=pt-br) de instalação e executá-lo seguindo o [passo a passo](https://developer.android.com/codelabs/basic-android-kotlin-compose-install-android-studio?hl=pt-br#0). Assim, a IDE vai estar pronta para ser usada.
+The first step is to download the [installation file](https://developer.android.com/studio?hl=en) and run it following the [step-by-step guide](https://developer.android.com/codelabs/basic-android-kotlin-compose-install-android-studio?hl=en). This way, the IDE will be ready for use.
 
-O próximo passo é importar os arquivos do repositório, nessa etapa você pode fazer o [download da pasta em zip](https://docs.github.com/pt/repositories/working-with-files/using-files/downloading-source-code-archives) ou usar o [Git Bash](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository?tool=cli). Com os arquivos baixados, inicie o Android Studio e abra a pasta com o projeto:
+The next step is to import the repository files. At this stage, you can either [download the folder as a zip](https://docs.github.com/en/repositories/working-with-files/using-files/downloading-source-code-archives) or use [Git Bash](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository?tool=cli). Once the files are downloaded, open Android Studio and open the project folder:
 
 <p align="center">
     <img src="./.github/open_project.png" width="500px">
 </p>
 
-Crie um novo dispositivo clicando no terceiro icone a direita e depois em ➕, selecione o Google Pixel 4 e clique em *next*:
+Create a new device by clicking the third icon on the right, then ➕, select Google Pixel 4, and click *next*:
 
 <p align="center">
     <img src="./.github/create_device.png" width="500px">
 </p>
 
-Escolha o Vanilla Ice Cream e clique em *next* e *finish*, logo em seguida execute o código no botão triangular verde acima:
+Choose Vanilla Ice Cream, click *next* and *finish*, then run the code by clicking the green triangular button above:
 <p align="center">
     <img src="./.github/finish_device_and_run.png" width="500px">
 </p>
 
-Pronto! Aproveite a App Phone List! 😁
+Done! Enjoy the Phone List App! 😁
